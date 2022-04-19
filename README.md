@@ -11,7 +11,7 @@ This repo contains the exercises for the Workshop: Orchestrating Robot Tasks wit
 
 For this exercise you need the Camunda Modeler. If you don't have it installed you can download it [here](https://camunda.com/download/modeler/)
 
-**Description: **
+**Description:**
 
 Imagine you start your day at Robocon: You need coffee! 
 
