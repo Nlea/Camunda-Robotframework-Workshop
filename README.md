@@ -6,6 +6,11 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
 
 - Docker
 - Camunda Modeler
+- Python
+   -Robotframework module 
+   -External Task client   
+- Robotframework
+- IDE of your choice
 
 ## Exercise 1: Set up a Camunda application using Docker
 :trophy: The goal of this exercise is to create a running Camunda instance with Docker
@@ -19,14 +24,10 @@ docker pull camunda/camunda-bpm-platform:latest
 docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
 ```
 
-:note: Once you started the container you will see the container id:
+:pushpin: Once you started the container you will see the container id:
 
 ![Screenshot Terminal](img/04-Terminal.png)
- If you like to stop the container you can use: 
-
-```
-docker stop 'ContainerId'
-```
+ If you like to stop the container you can use```docker stop 'ContainerId'``` or ```docker stop 'Container name'```
 
 Once you started the Docker container, Camunda is started in a Tomcat application server. You can access the Camunda's Frontend applications via: http://localhost:8080/camunda-welcome/index.html
 
@@ -56,7 +57,7 @@ Inspect a instance and see what information you can access.
 
 For this exercise you need the Camunda Modeler. If you don't have it installed you can download it [here](https://camunda.com/download/modeler/)
 
-**Description:**
+**Process Description:**
 
 Imagine you start your day at Robocon: You need coffee! 
 
@@ -76,11 +77,11 @@ Select it:
 
 ![Deploy from Modeler Step 2](img/07.Deploy.png)
 
-The default REST endpoint is localhost:8080.
+The default REST endpoint is localhost:8080. As we started our Docker image at that port. We don't have to change it
 
 ![Sucessfull deployed](img/08-Deploy-successful.png)
 
-Inspect your process in Cockpit. 
+Inspect your process in Cockpit. If you have problems with your deployment check out [this section](https://github.com/Nlea/Camunda-Robotframework-Workshop/blob/main/Solutions/02/README.md#problems-with-the-deployment).
 
 
 
