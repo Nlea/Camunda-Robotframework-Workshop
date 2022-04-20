@@ -56,7 +56,7 @@ Inspect a instance and see what information you can access.
 
 For this exercise you need the Camunda Modeler. If you don't have it installed you can download it [here](https://camunda.com/download/modeler/)
 
-Description: 
+**Description:**
 
 Imagine you start your day at Robocon: You need coffee! 
 
