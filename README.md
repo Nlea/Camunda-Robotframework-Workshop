@@ -25,9 +25,9 @@ docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
 ```
 
 
-<kbd>
    
-:pushpin: Once you started the container you will see the container id:
+:pushpin: Note: Once you started the container you will see the container id:
+<kbd>
 
 ![Screenshot Terminal](img/04-Terminal.png)
 
