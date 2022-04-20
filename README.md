@@ -25,10 +25,14 @@ docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
 ```
 
 
-   
-:pushpin: Note: Once you started the container you will see the container id:
 
-<kbd> ![Screenshot Terminal](img/04-Terminal.png)
+
+   
+:pushpin: 
+
+<kbd> Note: Once you started the container you will see the container id:
+
+![Screenshot Terminal](img/04-Terminal.png)
 
 If you like to stop the container you can use```docker stop 'ContainerId'``` or ```docker stop 'Container name'```
 </kbd>
