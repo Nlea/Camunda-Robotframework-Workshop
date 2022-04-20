@@ -23,18 +23,20 @@ For this exercise you need [Docker](https://www.docker.com/). Make sure [Docker 
 docker pull camunda/camunda-bpm-platform:latest
 docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
 ```
-
+  
+    
+    
 
    
 :pushpin: Note:
-<span style="fcolor:red">
+```diff
 
-Once you started the container you will see the container id:
+#Once you started the container you will see the container id:
 
 ![Screenshot Terminal](img/04-Terminal.png)
 
-If you like to stop the container you can use```docker stop 'ContainerId'``` or ```docker stop 'Container name'```
-</span>
+#If you like to stop the container you can use```docker stop 'ContainerId'``` or ```docker stop 'Container name'```
+``` 
 
  
  
