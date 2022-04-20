@@ -24,10 +24,16 @@ docker pull camunda/camunda-bpm-platform:latest
 docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
 ```
 
+
+<kbd>
 :pushpin: Once you started the container you will see the container id:
 
 ![Screenshot Terminal](img/04-Terminal.png)
- If you like to stop the container you can use```docker stop 'ContainerId'``` or ```docker stop 'Container name'```
+
+If you like to stop the container you can use```docker stop 'ContainerId'``` or ```docker stop 'Container name'```
+ </kdb>
+ 
+ 
 
 Once you started the Docker container, Camunda is started in a Tomcat application server. You can access the Camunda's Frontend applications via: http://localhost:8080/camunda-welcome/index.html
 
