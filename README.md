@@ -13,7 +13,7 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
 - IDE of your choice
 
 ## Exercise 1: Set up a Camunda application using Docker
-:trophy: The goal of this exercise is to create a running Camunda instance with Docker
+:trophy: The goal of this exercise is to create a running Camunda instance with Docker and to inspect the examples in Cockpit
 
 ### Run Camunda with Docker
 
@@ -63,12 +63,12 @@ A running process instances is represented with a blue token:
 
 Inspect a instance and see what information you can access. 
 
-:tada: Congrats you have a Camunda and 2 examIple processes running
+:tada: Congrats you have a Camunda application running and inspected the two deployed example process definitions
 
 
 ## Exercise 2: Model a process and add it to your application
 
-:trophy: The goal of this exercise is to create a process for the Camunda application. 
+:trophy: The goal of this exercise is to create a process and deploy it to your running Camunda application. 
 
 For this exercise you need the Camunda Modeler. If you don't have it installed you can download it [here](https://camunda.com/download/modeler/)
 
