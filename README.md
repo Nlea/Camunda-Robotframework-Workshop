@@ -27,15 +27,15 @@ docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
 
    
 :pushpin: Note:
+<span style="font-family:Papyrus; font-size:4em; color:grey">
 
-<kbd> 
 Once you started the container you will see the container id:
 
 ![Screenshot Terminal](img/04-Terminal.png)
 
 If you like to stop the container you can use```docker stop 'ContainerId'``` or ```docker stop 'Container name'```
+</span>
 
-</kbd>
  
  
 
