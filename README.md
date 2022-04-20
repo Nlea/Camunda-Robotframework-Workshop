@@ -30,7 +30,7 @@ docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
  -------------------------  
 :pushpin: Note:
 
-#Once you started the container you will see the container id:
+Once you started the container you will see the container id:
 
 ![Screenshot Terminal](img/04-Terminal.png)
 
@@ -70,7 +70,7 @@ Inspect a instance and see what information you can access.
 
 For this exercise you need the Camunda Modeler. If you don't have it installed you can download it [here](https://camunda.com/download/modeler/)
 
-**Process Description:**
+### Process Description
 
 Imagine you start your day at Robocon: You need coffee! 
 
@@ -78,9 +78,16 @@ Before you order your coffee you fill out a [survey](https://www.buzzfeed.com/ri
 
 Model a BPMN process model from that description in the Camunda Modeler. Hint: You can find a solution [here](Solutions/02).
 
+### Task types: User task
+
 Once you have your process model make sure that all task types are user tasks. 
 
 ![User Tasks](img/05-UserTasks.png)
+
+### Properties panel: technical attributes on general level
+
+
+### Deploy the process
 
 Now you can deploy the process Model from the Camunda Modeler to your running Camunda instance. In the left corner of the modeler you find a :rocket: symbol:
 
