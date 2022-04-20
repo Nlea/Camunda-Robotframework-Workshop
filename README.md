@@ -15,6 +15,8 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
 ## Exercise 1: Set up a Camunda application using Docker
 :trophy: The goal of this exercise is to create a running Camunda instance with Docker
 
+### Run Camunda with Docker
+
 For this exercise you need [Docker](https://www.docker.com/). Make sure [Docker is installed](https://docs.docker.com/get-docker/) on your machine. 
 
 [Camunda provides a Docker imagine](https://github.com/camunda/docker-camunda-bpm-platform#camunda-platform-docker-images). Start a Docker container of the latest Camunda Platform 7 release:
@@ -39,7 +41,7 @@ If you like to stop the container you can use```docker stop 'ContainerId'``` or 
 -------------------------
 
 
- 
+ ### Cockpit and running process instances
  
 
 Once you started the Docker container, Camunda is started in a Tomcat application server. You can access the Camunda's Frontend applications via: http://localhost:8080/camunda-welcome/index.html
