@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0-alpha.1" camunda:diagramRelationId="fffe2065-fe25-4c6b-8c8b-a8d1f164f58c">
+  <bpmn:process id="Process_42235fcf-4f8e-4c16-85fa-6c841ed4726a" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Coffee needed">
+      <bpmn:outgoing>Flow_0gqdmvy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0gqdmvy" sourceRef="StartEvent_1" targetRef="Activity_0f3wwps" />
+    <bpmn:sequenceFlow id="Flow_1fgvqqr" sourceRef="Activity_0sc2l9t" targetRef="Activity_003w3zu" />
+    <bpmn:endEvent id="Event_03vd8za" name="coffee ready">
+      <bpmn:incoming>Flow_1yvn7kr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1yvn7kr" sourceRef="Activity_0bcbazx" targetRef="Event_03vd8za" />
+    <bpmn:sequenceFlow id="Flow_08yywk1" sourceRef="Activity_003w3zu" targetRef="Activity_0bcbazx" />
+    <bpmn:userTask id="Activity_0sc2l9t" name="Get ingridients">
+      <bpmn:documentation>https://sampleapis.com/api-list/coffee</bpmn:documentation>
+      <bpmn:incoming>Flow_02y3rjg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fgvqqr</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_003w3zu" name="Prepare coffee">
+      <bpmn:incoming>Flow_1fgvqqr</bpmn:incoming>
+      <bpmn:outgoing>Flow_08yywk1</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0bcbazx" name="Tweet about coffee">
+      <bpmn:incoming>Flow_08yywk1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yvn7kr</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_02y3rjg" sourceRef="Activity_0f3wwps" targetRef="Activity_0sc2l9t" />
+    <bpmn:userTask id="Activity_0f3wwps" name="Define coffee type">
+      <bpmn:documentation>https://www.buzzfeed.com/rileyroach/which-coffee-are-you-572dyo73ow</bpmn:documentation>
+      <bpmn:incoming>Flow_0gqdmvy</bpmn:incoming>
+      <bpmn:outgoing>Flow_02y3rjg</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_42235fcf-4f8e-4c16-85fa-6c841ed4726a">
+      <bpmndi:BPMNEdge id="Flow_1yvn7kr_di" bpmnElement="Flow_1yvn7kr">
+        <di:waypoint x="890" y="120" />
+        <di:waypoint x="932" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fgvqqr_di" bpmnElement="Flow_1fgvqqr">
+        <di:waypoint x="570" y="120" />
+        <di:waypoint x="640" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02y3rjg_di" bpmnElement="Flow_02y3rjg">
+        <di:waypoint x="410" y="120" />
+        <di:waypoint x="470" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gqdmvy_di" bpmnElement="Flow_0gqdmvy">
+        <di:waypoint x="248" y="120" />
+        <di:waypoint x="310" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08yywk1_di" bpmnElement="Flow_08yywk1">
+        <di:waypoint x="740" y="120" />
+        <di:waypoint x="790" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="212" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="194" y="145" width="72" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_12lo4yt_di" bpmnElement="Activity_0f3wwps">
+        <dc:Bounds x="310" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_005rf11_di" bpmnElement="Activity_0sc2l9t">
+        <dc:Bounds x="470" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17j4de4_di" bpmnElement="Activity_003w3zu">
+        <dc:Bounds x="640" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16icfpz_di" bpmnElement="Activity_0bcbazx">
+        <dc:Bounds x="790" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03vd8za_di" bpmnElement="Event_03vd8za">
+        <dc:Bounds x="932" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="920" y="145" width="61" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
