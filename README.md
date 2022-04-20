@@ -27,7 +27,7 @@ docker run -d --name camunda -p 8080:8080 camunda/camunda-bpm-platform:latest
 
    
 :pushpin: Note:
-<span style="font-family:Papyrus; font-size:4em; color:grey">
+<span style="fcolor:red">
 
 Once you started the container you will see the container id:
 
