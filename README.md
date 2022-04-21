@@ -72,6 +72,7 @@ Inspect a instance and see what information you can access. Feel free to play ar
 :tada: Congrats you have a Camunda application running and inspected the two deployed example process definitions in Cockpit
 
 
+  
 ## Exercise 2: Model a process and add it to your application
 
 :trophy: The goal of this exercise is to create a process and deploy it to your running Camunda application. 
@@ -145,14 +146,22 @@ Let's have a look at the left side of Tasklist:
 
 Do that for all tasks in your process and observe how the instance moves in Cockpit
 
-
+----------------------------------------------------------------
 :star2: **Opitional task**:  
 - Start a process instance using the Camunda Modeler
-- Start a process instance using Camunda's REST API
+- Start a process instance using [Camunda's REST API](https://docs.camunda.org/manual/latest/reference/rest/process-definition/post-start-process-instance/)
+- Use the REST API to [get](https://docs.camunda.org/manual/latest/reference/rest/task/get/) a task id. With the id you can [claim](https://docs.camunda.org/manual/latest/reference/rest/task/post-claim/) and [complete](https://docs.camunda.org/manual/latest/reference/rest/task/post-complete/) user tasks
 
 
+:pushpin: Note:
+For this optional task it is useful to use a tool like [Postman](https://www.postman.com/)
+
+--------------------------------------------------------------
+
+:tada: Congrats you have a deployed process with user tasks and stepped through it using Camunda's Tasklist
 
 
+ 
 ## Exercise 3: Implement a Service Task: Combing the Pyhton External Task client and Robotframework
 :trophy: The goal of this exercise is to connect a Robotframework Task to the process using Python. 
 
