@@ -15,9 +15,11 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
 ## Exercise 1: Set up a Camunda application using Docker
 :trophy: The goal of this exercise is to create a running Camunda instance with Docker and to inspect the examples in Cockpit
 
-### Run Camunda with Docker
+:toolbox: **Tools needed**:
 
 For this exercise you need [Docker](https://www.docker.com/). Make sure [Docker is installed](https://docs.docker.com/get-docker/) on your machine. 
+
+### Run Camunda with Docker
 
 [Camunda provides a Docker imagine](https://github.com/camunda/docker-camunda-bpm-platform#camunda-platform-docker-images). Start a Docker container of the latest Camunda Platform 7 release:
 
@@ -70,6 +72,7 @@ Inspect a instance and see what information you can access.
 
 :trophy: The goal of this exercise is to create a process and deploy it to your running Camunda application. 
 
+:toolbox: **Tools needed**:
 For this exercise you need the Camunda Modeler. If you don't have it installed you can download it [here](https://camunda.com/download/modeler/)
 
 ### Process Description
@@ -80,14 +83,23 @@ Before you order your coffee you fill out a [survey](https://www.buzzfeed.com/ri
 
 Model a BPMN process model from that description in the Camunda Modeler. Hint: You can find a solution [here](Solutions/02).
 
-### Task types: User task
+### Task types: user task
 
-Once you have your process model make sure that all task types are user tasks. 
+Once you have your process model make sure that all task types are user tasks. Change them in the Camunda Modeler.
 
 ![User Tasks](img/05-UserTasks.png)
 
 ### Properties panel: technical attributes on general level
 
+In the Camunda Modeler click into the canvas and make sure that you have not selected a bpmn symbol. Now have a look on the right side at the properties pannel. The properties panel is used to set technical attributes for symbols and the process. 
+
+![General process level](img/09-general-process-information.png)
+
+Give your process a readable ID (something like: ```Process_getCoffee```) and a readable name (something like: ```Get Coffee Process```). 
+
+:bulb: **Good to know:** 
+- The process ID is used to version your process definitions. The Camunda engine takes care about the versioning.
+- The name will show up in Cockpit. If no name is defined the processID will show up instead
 
 ### Deploy the process
 
@@ -105,9 +117,17 @@ The default REST endpoint is localhost:8080. As we started our Docker image at t
 
 Inspect your process in Cockpit. If you have problems with your deployment check out [this section](https://github.com/Nlea/Camunda-Robotframework-Workshop/blob/main/Solutions/02/README.md#problems-with-the-deployment).
 
+### Run a process instance and step through the process using Tasklist
+
 
 
 ## Exercise 3: Implement a Service Task: Combing the Pyhton External Task client and Robotframework
+:trophy: The goal of this exercise is to connect a Robotframework Task to the process using Python. 
+
+:toolbox: **Tools needed**:
+For this exercise you need to have Python 3 installed on your machine. 
+
+
 
 ## Exercise 4: Implement a Services: Using the Camunda-Robotframework library
 

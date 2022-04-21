@@ -1,4 +1,5 @@
 # Solution Exercise 2
+You can use the 02.bpmn file in the folder and deploy it to your running Camunda instance. It includes all the added things from exercise 2.
 
 ## Process Model
  From the description we can model a simple bpmn diagramm containing 4 tasks. We will talk about the task types in the next section. 
