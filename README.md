@@ -132,13 +132,15 @@ The first think we want to do is to start a process instance of our deployed mod
 ![Start instance in Tasklist](img/11-start-process-tasklist.png)
 
 Let's have a look at the left side of Tasklist:
+![Tasklist](img/12-tasklist.png)
+
 1. You can filter tasks. In your list you can already see some predefined filters for the example process. Select the filter all tasks
 2. In this collumn you can see all tasks that match to the filter. You should see now the task from your "Get Coffee Process" on top. Select it
 3. This part shows the form attached to the User Task. We haven't defined any form yet. So no nothing to display here. 
 4. Before a task can be completed a user has to claim the task. Claim the task
 5. Afterwards you can complete it 
 
-![Tasklist](img/12-tasklist.png)
+
 
 
 Do that for all tasks in your process and observe how the instance moves in Cockpit
