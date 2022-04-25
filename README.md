@@ -281,9 +281,15 @@ Go to Cockpit and obsver the process variables from your last started instance. 
 
 
 ## Exercise 4: Implement a Services: Using the Camunda-Robotframework library
-In this exercise we will use a different way to connect Robotframework task to Camunda. 
+:trophy: The goal of this exercise is to connect a Robotframework taskto camunda using the Camunda-Robotframework library
 
 
-## Exercise 5: Adding BPMN events to the process
 
-## Exercise 6: Throwing BPMN errors in Robotframework
+## Exercise 5: Adding BPMN events and a User Task form to the process
+:trophy: The goal of this exercise is to model BPMN error in your process and add a form to a User Task
+
+## Exercise 6: Throwing BPMN errors
+
+### Using the Python External Task client
+
+### Using the Camunda-Robotframework library
