@@ -278,18 +278,25 @@ Go to Cockpit and obsver the process variables from your last started instance. 
 
 :tada: You connected a robot task to Camunda using the Camunda Python External Task client and a Robotframework Listener. 
 
+NOTE: Add Twitter task
+
 
 
 ## Exercise 4: Implement a Services: Using the Camunda-Robotframework library
 :trophy: The goal of this exercise is to connect a Robotframework taskto camunda using the Camunda-Robotframework library
 
+- both service tasks (Get ingridients + Prepare coffee)
 
+## Exercise 5: Routing the process with data and adding a User Interface
+- 
 
-## Exercise 5: Adding BPMN events and a User Task form to the process
+## Exercise 6: Adding BPMN events and a User Task form to the process
 :trophy: The goal of this exercise is to model BPMN error in your process and add a form to a User Task
 
-## Exercise 6: Throwing BPMN errors
+### With Python External Task Client
 
-### Using the Python External Task client
+### With Camunda-Robotframework library
 
-### Using the Camunda-Robotframework library
+- Link zu dem kompletten Projekt
+
+
