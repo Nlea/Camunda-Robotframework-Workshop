@@ -283,9 +283,39 @@ NOTE: Add Twitter task
 
 
 ## Exercise 4: Implement a Services: Using the Camunda-Robotframework library
-:trophy: The goal of this exercise is to connect a Robotframework taskto camunda using the Camunda-Robotframework library
+:trophy: The goal of this exercise is to connect a Robotframework task to camunda using the CamundaLibrary
 
-- both service tasks (Get ingridients + Prepare coffee)
+Implement a task that
+- fetches a workload from Camunda
+- gets the coffee type from that workload
+- identify ingredients for your coffee by calling coffee API
+
+### Prerequisites
+For this exercise you need a new dependecy: [robotframework-camunda](https://pypi.org/project/robotframework-camunda/)
+
+CamundaLibrary holds several keywords that are targeted to make working with Camunda REST API easier. Refer to [full keyword documentation](https://robotframework-camunda-demos.gitlab.io/robotframework-camunda-mirror/latest/keywords/camundalibrary/).
+
+### TL;DR
+- [Fetch](https://robotframework-camunda-demos.gitlab.io/robotframework-camunda-mirror/latest/keywords/camundalibrary/#Fetch%20Workload) a workload from the topic-name defined in your process model
+- Call [coffee ingredients API](https://api.sampleapis.com/coffee) and get recipe for coffee provided in workload
+- [Complete task](https://robotframework-camunda-demos.gitlab.io/robotframework-camunda-mirror/latest/keywords/camundalibrary/#Complete%20Task) and add ingredients to workload
+
+You can jump right in to the exercise now or continue reading for more background.
+
+### External Task pattern
+CamundaLibrary implements an [external task client](https://docs.camunda.org/manual/latest/user-guide/ext-client/) for Robot Framework. Similar to original external task clients, robot tasks with CamundaLibrary follows the following sequence flow:
+
+1. _Fetch_ a workload for a certain _topic_
+1. Finish working on a workload by
+    1. _complete_ 
+    1. raise an _error_ (see exercise 6)
+    1. raise an _incident_ 
+
+Classic so called `external task worker` are services that _subscripe_ to a topic and listen constantly, if workload is available.
+
+CamundaLibrary does not provide subscription of topics. It provides keywords checking for workload on-demand. The library caches the ID of the fetched workload, so you do not have to care about which process your workload is attached to. You simply focus in processing logic. When completing working on a workload, CamundaLibrary inserts all necessary metadata required from Camunda Platform to match your results with a process instance.
+
+**That means: you can only process 1 workload at a time in 1 robot task execution.**  You break out from the rule und take process instance management in your own hands. CamundaLibrary will worn you though every time when you fetch a new workload without having properly completed a former one.
 
 ## Exercise 5: Routing the process with data and adding a User Interface
 - 
