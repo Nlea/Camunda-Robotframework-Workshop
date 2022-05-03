@@ -323,10 +323,11 @@ CamundaLibrary does not provide subscription of topics. It provides keywords che
 ## Exercise 6: Adding BPMN events and a User Task form to the process
 :trophy: The goal of this exercise is to model BPMN error in your process and add a form to a User Task
 
+Similar like _completing_ a task, raising a BPMN error ends processing of the current task. In difference to completion, BPMN offers certain options to visualize and handle errors. BPMN errors are errors that you _expect_ to happen. Unexpected errors are considered incidents.
+
 ### With Python External Task Client
 
 ### With Camunda-Robotframework library
-
-- Link zu dem kompletten Projekt
+For raising a BPMN error with CamundaLibrary, you use the keyword `Throw BPMN Error` ([keyword documentation here](https://robotframework-camunda-demos.gitlab.io/robotframework-camunda-mirror/latest/keywords/camundalibrary/#Throw%20Bpmn%20Error)). 
 
 
