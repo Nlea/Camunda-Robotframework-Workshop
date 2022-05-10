@@ -46,7 +46,7 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
   * [TL'DR](#tldr)
   * [External Task Pattern](#external-task-pattern)
 
-* [**Exercise 5: Handling Business Errors **](#exercise-5-handling-business-errors)
+* [**Exercise 5: Handling Business Errors**](#exercise-5-handling-business-errors)
   * [using the Python External Task client](#with-python-external-task-client)
   * [using the Camunda-Robotframework-Library](#with-camunda-robotframework-library)
 
