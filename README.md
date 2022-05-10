@@ -460,7 +460,9 @@ Unexpected errors are considered incidents. We already covered incidents in [exe
 In order to model a bpmn error we can attach a boundary event to a task. 
 You can drag and drop an intermediate event from the left side panel from the modeler and place it on a task.
 ![Attach Boundary Event](img/17-attachBoundaryEvent.png)
+
 Then you can change the type to an error event and define the alternative path once a task is interrupted. 
+
 ![Change to BPMN Error Event](img/18-changeToErrorEvent.png)
 For our process we want a user to add the ingredients for a certain coffee type if the coffee API can't find it. If Twitter raises 
 a tweet duplication error we want that a user has the chance to adjust the tweet. 
