@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.12.0" camunda:diagramRelationId="fffe2065-fe25-4c6b-8c8b-a8d1f164f58c">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0-alpha.1" camunda:diagramRelationId="fffe2065-fe25-4c6b-8c8b-a8d1f164f58c">
   <bpmn:process id="Process_getCoffee" name="Get Coffee Process" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1" name="Coffee needed">
+    <bpmn:startEvent id="StartEvent_1" name="Coffee needed" camunda:formRef="start_coffeeForm" camunda:formRefBinding="latest">
       <bpmn:outgoing>Flow_0gqdmvy</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0gqdmvy" sourceRef="StartEvent_1" targetRef="Activity_0f3wwps" />
     <bpmn:sequenceFlow id="Flow_1fgvqqr" sourceRef="Activity_0sc2l9t" targetRef="Activity_003w3zu" />
     <bpmn:endEvent id="Event_03vd8za" name="coffee ready">
-      <bpmn:incoming>Flow_1yvn7kr</bpmn:incoming>
+      <bpmn:incoming>Flow_15k8k58</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1yvn7kr" sourceRef="Activity_0bcbazx" targetRef="Event_03vd8za" />
-    <bpmn:sequenceFlow id="Flow_08yywk1" sourceRef="Activity_003w3zu" targetRef="Activity_0bcbazx" />
+    <bpmn:sequenceFlow id="Flow_1yvn7kr" sourceRef="Activity_0bcbazx" targetRef="Gateway_0n9ba4k" />
+    <bpmn:sequenceFlow id="Flow_08yywk1" sourceRef="Activity_003w3zu" targetRef="Gateway_10jyqce" />
     <bpmn:userTask id="Activity_0sc2l9t" name="Get ingridients">
       <bpmn:documentation>https://sampleapis.com/api-list/coffee</bpmn:documentation>
       <bpmn:incoming>Flow_02y3rjg</bpmn:incoming>
@@ -21,7 +21,7 @@
       <bpmn:outgoing>Flow_08yywk1</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="Activity_0bcbazx" name="Tweet about coffee">
-      <bpmn:incoming>Flow_08yywk1</bpmn:incoming>
+      <bpmn:incoming>Flow_1xhlx2k</bpmn:incoming>
       <bpmn:outgoing>Flow_1yvn7kr</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_02y3rjg" sourceRef="Activity_0f3wwps" targetRef="Activity_0sc2l9t" />
@@ -30,6 +30,23 @@
       <bpmn:incoming>Flow_0gqdmvy</bpmn:incoming>
       <bpmn:outgoing>Flow_02y3rjg</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_10jyqce" name="Tweet wanted?">
+      <bpmn:incoming>Flow_08yywk1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xhlx2k</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0g3nhtd</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1xhlx2k" name="yes" sourceRef="Gateway_10jyqce" targetRef="Activity_0bcbazx">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{tweet}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0n9ba4k">
+      <bpmn:incoming>Flow_1yvn7kr</bpmn:incoming>
+      <bpmn:incoming>Flow_0g3nhtd</bpmn:incoming>
+      <bpmn:outgoing>Flow_15k8k58</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_15k8k58" sourceRef="Gateway_0n9ba4k" targetRef="Event_03vd8za" />
+    <bpmn:sequenceFlow id="Flow_0g3nhtd" name="no" sourceRef="Gateway_10jyqce" targetRef="Gateway_0n9ba4k">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{tweet}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_getCoffee">
@@ -39,11 +56,11 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_08yywk1_di" bpmnElement="Flow_08yywk1">
         <di:waypoint x="740" y="120" />
-        <di:waypoint x="790" y="120" />
+        <di:waypoint x="785" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1yvn7kr_di" bpmnElement="Flow_1yvn7kr">
-        <di:waypoint x="890" y="120" />
-        <di:waypoint x="932" y="120" />
+        <di:waypoint x="980" y="120" />
+        <di:waypoint x="1005" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1fgvqqr_di" bpmnElement="Flow_1fgvqqr">
         <di:waypoint x="570" y="120" />
@@ -53,16 +70,30 @@
         <di:waypoint x="248" y="120" />
         <di:waypoint x="310" y="120" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xhlx2k_di" bpmnElement="Flow_1xhlx2k">
+        <di:waypoint x="835" y="120" />
+        <di:waypoint x="880" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="849" y="102" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15k8k58_di" bpmnElement="Flow_15k8k58">
+        <di:waypoint x="1055" y="120" />
+        <di:waypoint x="1072" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g3nhtd_di" bpmnElement="Flow_0g3nhtd">
+        <di:waypoint x="810" y="145" />
+        <di:waypoint x="810" y="200" />
+        <di:waypoint x="1030" y="200" />
+        <di:waypoint x="1030" y="145" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="813" y="180" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="212" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="194" y="145" width="72" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_03vd8za_di" bpmnElement="Event_03vd8za">
-        <dc:Bounds x="932" y="102" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="920" y="145" width="61" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_005rf11_di" bpmnElement="Activity_0sc2l9t">
@@ -71,11 +102,26 @@
       <bpmndi:BPMNShape id="Activity_17j4de4_di" bpmnElement="Activity_003w3zu">
         <dc:Bounds x="640" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_16icfpz_di" bpmnElement="Activity_0bcbazx">
-        <dc:Bounds x="790" y="80" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1yqeipu_di" bpmnElement="Activity_0f3wwps">
         <dc:Bounds x="310" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16icfpz_di" bpmnElement="Activity_0bcbazx">
+        <dc:Bounds x="880" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_10jyqce_di" bpmnElement="Gateway_10jyqce" isMarkerVisible="true">
+        <dc:Bounds x="785" y="95" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="773" y="65" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03vd8za_di" bpmnElement="Event_03vd8za">
+        <dc:Bounds x="1072" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1060" y="145" width="61" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0n9ba4k_di" bpmnElement="Gateway_0n9ba4k" isMarkerVisible="true">
+        <dc:Bounds x="1005" y="95" width="50" height="50" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
