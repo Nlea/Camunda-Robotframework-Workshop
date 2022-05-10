@@ -47,39 +47,40 @@
       <bpmn:incoming>Flow_1totm0p</bpmn:incoming>
       <bpmn:outgoing>Flow_1yvn7kr</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:boundaryEvent id="Event_1de3iqm" name="ingredients for coffee type not found" attachedToRef="Activity_0sc2l9t">
-      <bpmn:outgoing>Flow_1yb20l0</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_0ypq7ud" />
-    </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_1yb20l0" sourceRef="Event_1de3iqm" targetRef="Activity_0a5xaep" />
     <bpmn:exclusiveGateway id="Gateway_00u85bd">
       <bpmn:incoming>Flow_1fgvqqr</bpmn:incoming>
       <bpmn:incoming>Flow_1yl7puf</bpmn:incoming>
       <bpmn:outgoing>Flow_1nhaqir</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1nhaqir" sourceRef="Gateway_00u85bd" targetRef="Activity_003w3zu" />
-    <bpmn:sequenceFlow id="Flow_1yl7puf" sourceRef="Activity_0a5xaep" targetRef="Gateway_00u85bd" />
-    <bpmn:userTask id="Activity_0a5xaep" name="Add ingredients">
-      <bpmn:incoming>Flow_1yb20l0</bpmn:incoming>
-      <bpmn:outgoing>Flow_1yl7puf</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:boundaryEvent id="Event_0y9rcrw" name="tweet is a duplicate" attachedToRef="Activity_0bcbazx">
       <bpmn:outgoing>Flow_18pizaa</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_1r48xqe" />
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1r48xqe" errorRef="Error_1bbgc7e" />
     </bpmn:boundaryEvent>
     <bpmn:sequenceFlow id="Flow_18pizaa" sourceRef="Event_0y9rcrw" targetRef="Activity_18af0v0" />
     <bpmn:userTask id="Activity_18af0v0" name="Adjust tweet">
       <bpmn:incoming>Flow_18pizaa</bpmn:incoming>
-      <bpmn:outgoing>Flow_0kszm4p</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1uh2rn7</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_03ikrfv">
       <bpmn:incoming>Flow_1xhlx2k</bpmn:incoming>
-      <bpmn:incoming>Flow_0kszm4p</bpmn:incoming>
+      <bpmn:incoming>Flow_1uh2rn7</bpmn:incoming>
       <bpmn:outgoing>Flow_1totm0p</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1totm0p" sourceRef="Gateway_03ikrfv" targetRef="Activity_0bcbazx" />
-    <bpmn:sequenceFlow id="Flow_0kszm4p" sourceRef="Activity_18af0v0" targetRef="Gateway_03ikrfv" />
+    <bpmn:boundaryEvent id="Event_1de3iqm" name="ingredients for coffee type not found" attachedToRef="Activity_0sc2l9t">
+      <bpmn:outgoing>Flow_1yb20l0</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0ypq7ud" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1yb20l0" sourceRef="Event_1de3iqm" targetRef="Activity_0a5xaep" />
+    <bpmn:userTask id="Activity_0a5xaep" name="Add ingredients">
+      <bpmn:incoming>Flow_1yb20l0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yl7puf</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1yl7puf" sourceRef="Activity_0a5xaep" targetRef="Gateway_00u85bd" />
+    <bpmn:sequenceFlow id="Flow_1uh2rn7" sourceRef="Activity_18af0v0" targetRef="Gateway_03ikrfv" />
   </bpmn:process>
+  <bpmn:error id="Error_1bbgc7e" name="Error_tweet-duplicate" errorCode="err_duplicate" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_getCoffee">
       <bpmndi:BPMNEdge id="Flow_0g3nhtd_di" bpmnElement="Flow_0g3nhtd">
@@ -138,17 +139,17 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_18pizaa_di" bpmnElement="Flow_18pizaa">
         <di:waypoint x="1110" y="178" />
-        <di:waypoint x="1110" y="270" />
-        <di:waypoint x="1140" y="270" />
+        <di:waypoint x="1110" y="250" />
+        <di:waypoint x="1140" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1totm0p_di" bpmnElement="Flow_1totm0p">
         <di:waypoint x="1015" y="120" />
         <di:waypoint x="1080" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0kszm4p_di" bpmnElement="Flow_0kszm4p">
-        <di:waypoint x="1190" y="310" />
-        <di:waypoint x="1190" y="330" />
-        <di:waypoint x="990" y="330" />
+      <bpmndi:BPMNEdge id="Flow_1uh2rn7_di" bpmnElement="Flow_1uh2rn7">
+        <di:waypoint x="1190" y="290" />
+        <di:waypoint x="1190" y="320" />
+        <di:waypoint x="990" y="320" />
         <di:waypoint x="990" y="145" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -194,7 +195,7 @@
         <dc:Bounds x="1080" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1y2a76u_di" bpmnElement="Activity_18af0v0">
-        <dc:Bounds x="1140" y="230" width="100" height="80" />
+        <dc:Bounds x="1140" y="210" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0znxlsm_di" bpmnElement="Event_1de3iqm">

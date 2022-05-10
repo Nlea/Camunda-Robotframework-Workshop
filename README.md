@@ -355,7 +355,7 @@ You can find the full ```worker.py``` file with listener [here](/Solutions/03/De
 
 Start a new process instance of the process. If you did the optional task before make sure your robot task is error free again. Start the ```worker.py```. 
 
-Go to Cockpit and obsver the process variables from your last started instance. You should be able to see the variable ```type``` . 
+Go to Cockpit and observe the process variables from your last started instance. You should be able to see the variable ```type``` . 
 
 
 ### Getting process variables from Camunda to the task
@@ -393,7 +393,7 @@ ENV_TWITTER_ACCESS_TOKEN_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ````
 
 We want to use the Twitter Keyword library to authorize and to send a tweet. The text we tweet should contain the name of the person that ordered the coffee and the coffee type.
-The task robot should look like [this]()
+The task robot should look like [this](/Solutions/03/Tweet%20about%20coffee%20task/task.robot)
 
 In order to get the variables into the robot task we first need to store the variables from the process in a list with the following structure ```'variable_name: variable_value```. 
 We can use the External Task client to access the process variables:
@@ -408,7 +408,7 @@ Then we can start the ```task.robot``` from our ```worker.py``` and hand in the 
 ```python
  robotOutput = robot.run("task.robot", variable=variables)
 ```
-You can find the full worker [here]().
+You can find the full worker [here](Solutions/03/Tweet%20about%20coffee%20task/worker.py).
 
 
 :tada: You connected a robot task to Camunda using the Camunda Python External Task client. You used Robotframework Listener to get variables back to Camunda and created a list to hand in variables from camunda to your robot.task . 
@@ -443,7 +443,7 @@ CamundaLibrary implements an [external task client](https://docs.camunda.org/man
     1. raise an _error_ (see exercise 5)
     1. raise an _incident_ 
 
-Classic so called `external task worker` are services that _subscripe_ to a topic and listen constantly, if workload is available.
+Classic so called `external task worker` are services that _subscribe_ to a topic and listen constantly, if workload is available.
 
 CamundaLibrary does not provide subscription of topics. It provides keywords checking for workload on-demand. The library caches the ID of the fetched workload, so you do not have to care about which process your workload is attached to. You simply focus in processing logic. When completing working on a workload, CamundaLibrary inserts all necessary metadata required from Camunda Platform to match your results with a process instance.
 
@@ -458,19 +458,33 @@ The modeling language BPMN offers a way to handle business errors. BPMN errors a
 Unexpected errors are considered incidents. We already covered incidents in [exercise 3](#connect-robotframework-task-to-the-worker)
 
 In order to model a bpmn error we can attach a boundary event to a task. 
-You can drag and drop an intermediate event from the left side panel from the modeler and place it on a task: 
-
+You can drag and drop an intermediate event from the left side panel from the modeler and place it on a task.
+![Attach Boundary Event](img/17-attachBoundaryEvent.png)
 Then you can change the type to an error event and define the alternative path once a task is interrupted. 
-
+![Change to BPMN Error Event](img/18-changeToErrorEvent.png)
 For our process we want a user to add the ingredients for a certain coffee type if the coffee API can't find it. If Twitter raises 
 a tweet duplication error we want that a user has the chance to adjust the tweet. 
 
-Include that logic into your process diagram. You can find the solution [here]() 
+Include that logic into your process diagram. You can find the solution [here](Solutions/05/05.bpmn) 
 
 Next we will see how we can throw the BPMN error in our code
 
 
 ### With Python External Task Client
+First let's fill in the details in the properties' panel in the Camunda Modeler. Select the BPMN Error boundary event and create a new global error reference.
+![Create new error reference](img/19-properties-panel-for-error.png)
+
+Fill in the other details.
+![technical details for bpmn error event](img/20-technical-details-for-error-event.png)
+
+We already know that the external Task client can **complete** and **fail** a service task. A third method is to throw a bpmn error. 
+```python
+return task.bpmn_error(error_code="err_duplicate", error_message="The Tweet is a duplicate")
+```
+The ```error_code``` needs to match with the error code in the Model. In fact the Twitter API gives us a duplication error if we try to send the same tweet within 24 hours.
+If we get the duplication error we don't want to fail the task, but instead return a BPMN error so a user has the chance to adjust the tweet. 
+
+Try to access the Robotframework task error message and implement the logic in the ```worker.py``` for the Send Tweet task. 
 
 ### With Camunda-Robotframework library
 For raising a BPMN error with CamundaLibrary, you use the keyword `Throw BPMN Error` ([keyword documentation here](https://robotframework-camunda-demos.gitlab.io/robotframework-camunda-mirror/latest/keywords/camundalibrary/#Throw%20Bpmn%20Error)). 
