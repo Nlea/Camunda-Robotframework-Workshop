@@ -11,10 +11,6 @@
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1yvn7kr" sourceRef="Activity_0bcbazx" targetRef="Gateway_0n9ba4k" />
     <bpmn:sequenceFlow id="Flow_08yywk1" sourceRef="Activity_003w3zu" targetRef="Gateway_10jyqce" />
-    <bpmn:userTask id="Activity_003w3zu" name="Prepare coffee">
-      <bpmn:incoming>Flow_1fgvqqr</bpmn:incoming>
-      <bpmn:outgoing>Flow_08yywk1</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_02y3rjg" sourceRef="Activity_0f3wwps" targetRef="Activity_0sc2l9t" />
     <bpmn:serviceTask id="Activity_0f3wwps" name="Define coffee type" camunda:type="external" camunda:topic="coffeeTypeTask">
       <bpmn:documentation>https://www.buzzfeed.com/rileyroach/which-coffee-are-you-572dyo73ow</bpmn:documentation>
@@ -38,15 +34,19 @@
     <bpmn:sequenceFlow id="Flow_0g3nhtd" name="no" sourceRef="Gateway_10jyqce" targetRef="Gateway_0n9ba4k">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">#{tweet}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Activity_0sc2l9t" name="Get ingridients" camunda:type="external" camunda:topic="getIngridients">
+      <bpmn:documentation>https://sampleapis.com/api-list/coffee</bpmn:documentation>
+      <bpmn:incoming>Flow_02y3rjg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fgvqqr</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_003w3zu" name="Prepare coffee" camunda:type="external" camunda:topic="prepareCoffeeTask">
+      <bpmn:incoming>Flow_1fgvqqr</bpmn:incoming>
+      <bpmn:outgoing>Flow_08yywk1</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_0bcbazx" name="Tweet about coffee" camunda:type="external" camunda:topic="tweetCoffeeTask">
       <bpmn:incoming>Flow_1xhlx2k</bpmn:incoming>
       <bpmn:outgoing>Flow_1yvn7kr</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Activity_0sc2l9t" name="Get ingridients">
-      <bpmn:documentation>https://sampleapis.com/api-list/coffee</bpmn:documentation>
-      <bpmn:incoming>Flow_02y3rjg</bpmn:incoming>
-      <bpmn:outgoing>Flow_1fgvqqr</bpmn:outgoing>
-    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_getCoffee">
@@ -102,12 +102,6 @@
           <dc:Bounds x="1060" y="145" width="61" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_005rf11_di" bpmnElement="Activity_0sc2l9t">
-        <dc:Bounds x="470" y="80" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_17j4de4_di" bpmnElement="Activity_003w3zu">
-        <dc:Bounds x="640" y="80" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1yqeipu_di" bpmnElement="Activity_0f3wwps">
         <dc:Bounds x="310" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -120,7 +114,13 @@
       <bpmndi:BPMNShape id="Gateway_0n9ba4k_di" bpmnElement="Gateway_0n9ba4k" isMarkerVisible="true">
         <dc:Bounds x="1005" y="95" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_01bh4yd_di" bpmnElement="Activity_0bcbazx">
+      <bpmndi:BPMNShape id="Activity_0f8702p_di" bpmnElement="Activity_0sc2l9t">
+        <dc:Bounds x="470" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cncg3i_di" bpmnElement="Activity_003w3zu">
+        <dc:Bounds x="640" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19gyo0b_di" bpmnElement="Activity_0bcbazx">
         <dc:Bounds x="880" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.0.0-alpha.1"
+  },
+  "components": [
+    {
+      "label": "Name",
+      "type": "textfield",
+      "id": "Field_1a6x0g4",
+      "key": "name",
+      "description": "the person that wants to get coffee"
+    },
+    {
+      "label": "Post about the coffee on twitter?",
+      "type": "checkbox",
+      "id": "Field_1h5hjtm",
+      "key": "twitter",
+      "description": "Should we create a social media post once the coffee is ready?"
+    }
+  ],
+  "type": "default",
+  "id": "start_coffeeForm",
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.16.0"
+}

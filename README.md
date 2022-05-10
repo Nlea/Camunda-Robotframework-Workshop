@@ -21,8 +21,6 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
 * [**Exercise 1: Set up Camunda application**](#exercise-1-set-up-a-camunda-application-using-docker)
   * [Run Camunda with Docker](#run-camunda-with-docker)
   * [Cockpit and running process instances](#cockpit-and-running-process-instances)
-  
-
 * [**Exercise 2:Model a process and add it to your application**](#exercise-2-model-a-process-and-add-it-to-your-application)
   * [Process Description](#process-description)
   * [Properties panel](#properties-panel-technical-attributes-on-general-level)
@@ -30,8 +28,6 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
     * [Using process data in your model](#using-process-data-to-route-the-process)
   * [Deploy your process and form](#deploy-the-process-and-your-form)
   * [Run a process instance](#run-a-process-instance-and-step-through-the-process-using-tasklist)
-
-
 * [**Exercise 3: Connecting Robotframework using Python**](#exercise-3-implement-a-service-task-combing-the-python-external-task-client-and-robotframework)
   * [Robotframework Task](#building-a-robotframework-task)
   * [Service Task in BPMN Model](#change-task-type-to-service-task-in-the-bpmn-process)
@@ -39,14 +35,10 @@ Welcome to the Workshop: "Orchestrating Robot Tasks with Camunda Platform". The 
   * [Connect Worker and Robotframework](#connect-robotframework-task-to-the-worker)
     * [Variable handling: Robotframework to Camunda](#getting-variables-from-the-robot-task-to-camunda)
     * [Variable handling: Camunda to Robotframework](#getting-process-variables-from-camunda-to-the-task)
-
-
 * [**Exercise 4: Connecting Robotframework using Camunda Robotframework Library**](#exercise-4-implement-a-services-using-the-camunda-robotframework-library)
   * [Prerequisites](#prerequisites)
   * [TL'DR](#tldr)
   * [External Task Pattern](#external-task-pattern)
-
-
 * [**Exercise 5: Handling Business Errors**](#exercise-5-handling-business-errors)
   * [using the Python External Task client](#with-python-external-task-client)
   * [using the Camunda-Robotframework-Library](#with-camunda-robotframework-library)
@@ -460,7 +452,23 @@ CamundaLibrary does not provide subscription of topics. It provides keywords che
 ## Exercise 5: Handling Business Errors
 :trophy: The goal of this exercise is to understand how to handle business errors using the BPMN error event
 
-Similar like _completing_ a task, raising a BPMN error ends processing of the current task. In difference to completion, BPMN offers certain options to visualize and handle errors. BPMN errors are errors that you _expect_ to happen. Unexpected errors are considered incidents.
+
+### BPMN Errors
+The modeling language BPMN offers a way to handle business errors. BPMN errors are errors that you _expect_ to happen.
+Unexpected errors are considered incidents. We already covered incidents in [exercise 3](#connect-robotframework-task-to-the-worker)
+
+In order to model a bpmn error we can attach a boundary event to a task. 
+You can drag and drop an intermediate event from the left side panel from the modeler and place it on a task: 
+
+Then you can change the type to an error event and define the alternative path once a task is interrupted. 
+
+For our process we want a user to add the ingredients for a certain coffee type if the coffee API can't find it. If Twitter raises 
+a tweet duplication error we want that a user has the chance to adjust the tweet. 
+
+Include that logic into your process diagram. You can find the solution [here]() 
+
+Next we will see how we can throw the BPMN error in our code
+
 
 ### With Python External Task Client
 
