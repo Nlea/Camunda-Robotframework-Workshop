@@ -471,10 +471,13 @@ Next we will see how we can throw the BPMN error in our code
 
 
 ### With Python External Task Client
-First let's fill in the details in the properties' panel in the Camunda Modeler. Select the BPMN Error boundary event and create a new global error reference.
+First let's fill in the details in the properties' panel in the Camunda Modeler.
+Select the BPMN Error boundary event and create a new global error reference.
+
 ![Create new error reference](img/19-properties-panel-for-error.png)
 
 Fill in the other details.
+
 ![technical details for bpmn error event](img/20-technical-details-for-error-event.png)
 
 We already know that the external Task client can **complete** and **fail** a service task. A third method is to throw a bpmn error. 
