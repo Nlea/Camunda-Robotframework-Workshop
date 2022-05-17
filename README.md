@@ -237,7 +237,7 @@ For this optional task it is useful to use a tool like [Postman](https://www.pos
 - A package installer like [pip](https://pypi.org/project/pip/) can be handy
 - [The Camunda External Task client Python3](https://github.com/camunda-community-hub/camunda-external-task-client-python3) installing with pip: ```pip install camunda-external-task-client-python3 ```
 - [Robotframework](https://pypi.org/project/robotframework/) installing with pip: ```pip install robotframework ``` A more detailed description can be found [here](https://github.com/robotframework/robotframework/blob/master/INSTALL.rst)
-- [Selenium Library from rpaframework](https://rpaframework.org/libraries/browser_selenium/index.html) : `pip instal rpaframework`
+- [Selenium Library from rpaframework](https://rpaframework.org/libraries/browser_selenium/index.html) : `pip install rpaframework`
 
 ### Building a Robotframework Task
 
