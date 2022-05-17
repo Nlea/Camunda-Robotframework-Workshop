@@ -322,9 +322,6 @@ We can complete tasks in Camunda with handing back variables: ``` return task.co
 ```python
 from robot.libraries.BuiltIn import BuiltIn
 
-ROBOT_LISTENER_API_VERSION = 2
-
-
 class getVariablesListener:
   ROBOT_LISTENER_API_VERSION = 2
   def end_test(self, name, attributes):
